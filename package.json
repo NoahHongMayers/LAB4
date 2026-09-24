@@ -1,0 +1,15 @@
+{
+  "name": "skeleton",
+  "version": "1.0.0",
+  "description": "skeleton",
+  "license": "ISC",
+  "author": "Noah Hong Mayers",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "node": "^26.9.0"
+  }
+}

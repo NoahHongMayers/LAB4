@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+
+<%- include('../partials/head.ejs') %>
+
+<body>
+
+
+    <%
+    var pizzaPrice = 0;
+    var extraPrice = 0;
+
+    if (pizza == "Pepperoni") 
+    {
+        pizzaPrice = 13.80;
+    } 
+    
+    else if (pizza == "All Dressed") 
+    {
+        pizzaPrice = 15.50;
+    } 
+
+    else if (pizza == "Vegetarian") 
+    {
+        pizzaPrice = 14.30;
+    }
+
+
+    if (size == "Small") 
+    {
+        pizzaPrice = pizzaPrice * 0.8;
+    } 
+
+    else if (size == "Medium") 
+    {
+        pizzaPrice = pizzaPrice * 1.0;
+    }
+
+    else if (size == "Large") 
+    {
+        pizzaPrice = pizzaPrice * 1.2;
+    }
+
+
+    if (addIngredients.includes("Spicy Sausage")) {
+        extraPrice = extraPrice + 1.50;
+    }
+
+    if (addIngredients.includes("Extra Cheese")) {
+        extraPrice = extraPrice + 1.50;
+    }
+
+    if (addIngredients.includes("Italian Ham")) {
+        extraPrice = extraPrice + 1.50;
+    }
+
+
+    var subtotal = (pizzaPrice + extraPrice) * quantity;
+    var taxes = subtotal * 0.15;
+    var total = subtotal + taxes;
+%>
+
+<h1>Order Summary</h1>
+ 
+<p>Pizza: <%= pizza %></p>
+<p>Size: <%= size %></p>
+<p>Additional Ingredients: <%= addIngredients.join(", ") %></p>
+
+<p>Price per pizza: $<%= pizzaPrice.toFixed(2) %></p>
+<p>Quantity: <%= quantity %></p>
+<p>Extra Ingredients Price: $<%= extraPrice.toFixed(2) %></p>
+
+<hr>
+
+<p>Subtotal: $<%= subtotal.toFixed(2) %></p>
+<p>Taxes: $<%= taxes.toFixed(2) %></p>
+<h2>Total: $<%= total.toFixed(2) %></h2>
+
+<hr>
+
+<h2>Customer Information</h2>
+
+<p>Address: <%= address %></p>
+<p>Postal Code: <%= postalCode %></p>
+<p>Last Name: <%= lastName %></p>
+<p>First Name: <%= firstName %></p>
+<p>Phone Number: <%= phone %></p>
+<p>Email: <%= email %></p>
+<p>Payment Method: <%= payment %></p>
+
+</body>
+
+</html>

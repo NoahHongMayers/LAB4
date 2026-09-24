@@ -1,0 +1,97 @@
+<!--
+ * @file     home.ejs
+ * @author   Noah Hong Mayers | 202430525@edu.clg.qc.ca
+ * @version  1.0
+ * @date     September 22 2026
+ * @brief    Skeleton for a Node.js application using Express framework
+ */
+ -->
+<!DOCTYPE html>
+<html>
+
+<%- include('../partials/head.ejs') %>
+
+    <body>
+        <%- include('../partials/header.ejs') %>
+
+
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+
+            <h2>Welcome to the Home Page</h2>
+
+            <form method="post" action="/orders">
+
+                <!-- pizza -->
+                Toppings<br>
+                <input type="radio" name="pizza" value="Pepperoni" checked>
+                <label>Pepperoni</label><br>
+
+                <input type="radio" name="pizza" value="All Dressed">
+                <label>All Dressed</label><br>
+
+                <input type="radio" name="pizza" value="Vegetarian" >
+                <label>Vegetarian</label>
+                <br><br>
+
+                <!-- quantity -->
+                Number of Pizzas<br>
+                <input type="number" name="quantity" min="1" max="99" step="1" value="1"><br><br>
+
+                <!-- size -->
+                Size<br>
+                <select name="size">
+                    <option value="Small">Small</option>
+                    <option value="Medium">Medium</option>
+                    <option value="Large">Large</option>
+                </select><br><br>
+
+                <!-- addIngredients -->
+                Additional Ingredients<br>
+                <input type="checkbox" name="addIngredients" value="Spicy Sausage">
+                <label>Spicy Sausage</label><br>
+
+                <input type="checkbox" name="addIngredients" value="Extra Cheese">
+                <label>Extra Cheese</label><br>
+
+                <input type="checkbox" name="addIngredients" value="Italian Ham">
+                <label>Italian Ham</label>
+                <br><br>
+
+                <!-- address -->
+                Address<br>
+                <textarea name="address" required></textarea><br><br>
+
+                <!-- postalCode -->
+                Postal Code<br>
+                <input type="text" title="Enter a postal code using the format A1A1A1" name="postalCode"
+                    pattern="[A-Za-z][0-9][A-Za-z][0-9][A-Za-z][0-9]" maxlength="6" required><br><br>
+
+                <!-- lastName -->
+                Last Name<br>
+                <input type="text" name="lastName" required><br><br>
+
+                <!-- firstName -->
+                First Name<br>
+                <input type="text" name="firstName" required><br><br>
+
+                <!-- phone -->
+                Phone Number<br>
+                <input type="text" title="Enter a phone number using the format 123 4567 890" name="phone"
+                    pattern="[0-9]{3} [0-9]{3} [0-9]{4}" required><br><br>
+
+                <!-- email -->
+                Email<br>
+                <input type="email" name="email"><br><br>
+
+                <!-- payment -->
+                Payment Method<br>
+                <input type="text" name="payment" required><br><br>
+
+                <button type="submit">Confirm my Order</button>
+
+            </form>
+
+            <%- include('../partials/footer.ejs') %>
+    </body>
+
+</html>
