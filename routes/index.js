@@ -3,11 +3,14 @@
  * @author   Noah Hong Mayers | 202430525@edu.clg.qc.ca
  * @version  1.0
  * @date     September 22 2026
- * @brief    Skeleton for a Node.js application using Express framework
+ * @brief    Main routes for the application
  */
 
 var express = require('express');// Import the Express framework
 var router = express.Router();// Create a new router object to handle routes
+
+
+const historique = {};// Object to store order history
 
 
 router.get('/', function (req, res, next) {
@@ -39,6 +42,29 @@ router.post('/orders', function (req, res) {
 
   const payment = req.body.payment;
 
+  if (!historique[phone]) {// If the phone number is not already in the history, create a new entry
+    historique[phone] = {
+      client: {
+        firstName,
+        lastName,
+        address,
+        postalCode,
+        phone,
+        email
+      },
+
+      orders: []// Initialize an empty array to store orders for this client
+    };
+  }
+
+  historique[phone].orders.push({// Add the new order to the client's order history
+    pizza,
+    quantity,
+    size,
+    addIngredients,
+    payment,
+    date: new Date()
+  });
 
   res.render('pages/orders', {
     pizza: pizza,
@@ -54,4 +80,36 @@ router.post('/orders', function (req, res) {
     payment: payment
   });
 });
+
+
+router.get('/history', function (req, res) {// Handle GET requests to the /history route
+  res.render('pages/history', {
+    client: null,
+    orders: null,
+    error: null
+  });
+});
+
+
+router.post('/history', function (req, res) {// Handle POST requests to the /history route
+
+  const phone = req.body.phone;
+  const customerData = historique[phone];
+
+  if (!customerData) {
+    return res.render('pages/history', {
+      client: null,
+      orders: null,
+      error: 'No client found with this phone number.'
+    });
+  }
+
+  res.render('pages/history', {
+    client: customerData.client,
+    orders: customerData.orders,
+    error: null
+  });
+});
+
+
 module.exports = router;// Export the router object to be used in other parts of the application

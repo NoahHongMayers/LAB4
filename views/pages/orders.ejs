@@ -1,3 +1,12 @@
+<!--
+ * @file     orders.ejs
+ * @author   Noah Hong Mayers | 202430525@edu.clg.qc.ca
+ * @version  1.0
+ * @date     September 22 2026
+ * @brief    Order summary page
+ */
+ -->
+
 <!DOCTYPE html>
 <html>
 
@@ -64,7 +73,7 @@
  
 <p>Pizza: <%= pizza %></p>
 <p>Size: <%= size %></p>
-<p>Additional Ingredients: <%= addIngredients.join(", ") %></p>
+<p>Additional Ingredients: <%= addIngredients %></p>
 
 <p>Price per pizza: $<%= pizzaPrice.toFixed(2) %></p>
 <p>Quantity: <%= quantity %></p>
@@ -87,6 +96,10 @@
 <p>Phone Number: <%= phone %></p>
 <p>Email: <%= email %></p>
 <p>Payment Method: <%= payment %></p>
+
+<br><br>
+
+Return Home <a href="/">here</a> <br>
 
 </body>
 

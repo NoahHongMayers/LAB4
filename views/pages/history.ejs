@@ -1,0 +1,74 @@
+<!--
+ * @file     history.ejs
+ * @author   Noah Hong Mayers | 202430525@edu.clg.qc.ca
+ * @version  1.0
+ * @date     September 22 2026
+ * @brief    History page
+ -->
+<!DOCTYPE html>
+<html>
+
+<%- include('../partials/head.ejs') %>
+
+<body>
+
+    <h1>Find an Order</h1>
+
+    <form method="post" action="/history">
+        <label for="phone">Phone Number:</label>
+        <input type="text" id="phone" name="phone" required>
+        <button type="submit">Search</button>
+    </form>
+
+   <% if (error) { %>
+
+        <p><%= error %></p>
+
+    <% } %>
+
+
+    <% if (client) { %>
+
+        <h2>Client Information</h2>
+
+        <p>Name: <%= client.firstName %> <%= client.lastName %></p>
+
+        <p>Address: <%= client.address %></p>
+
+        <p>Postal Code: <%= client.postalCode %></p>
+
+        <p>Phone: <%= client.phone %></p>
+
+        <p>Email: <%= client.email %></p>
+
+
+        <h2>Order History</h2>
+
+        <% orders.forEach(function(order) { %> <!-- Loop through each order and display its details -->
+
+            <hr>
+
+            <p>Pizza: <%= order.pizza %></p>
+
+            <p>Size: <%= order.size %></p>
+
+            <p>Quantity: <%= order.quantity %></p>
+
+            <p>
+                Additional Ingredients:
+                <%= order.addIngredients %>
+            </p>
+
+            <p>Payment: <%= order.payment %></p>
+
+            <p>Date: <%= order.date %></p>
+
+        <% }); %>
+
+    <% } %>
+
+
+    return to <a href="/">Home</a>
+</body>
+
+</html>

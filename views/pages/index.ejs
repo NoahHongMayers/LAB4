@@ -1,9 +1,9 @@
 <!--
- * @file     home.ejs
+ * @file     index.ejs
  * @author   Noah Hong Mayers | 202430525@edu.clg.qc.ca
  * @version  1.0
  * @date     September 22 2026
- * @brief    Skeleton for a Node.js application using Express framework
+ * @brief    Home page
  */
  -->
 <!DOCTYPE html>
@@ -13,9 +13,6 @@
 
     <body>
         <%- include('../partials/header.ejs') %>
-
-
-            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 
             <h2>Welcome to the Home Page</h2>
 
@@ -90,6 +87,9 @@
                 <button type="submit">Confirm my Order</button>
 
             </form>
+
+
+            Find an Order <a href="/history">here</a> <br>
 
             <%- include('../partials/footer.ejs') %>
     </body>
