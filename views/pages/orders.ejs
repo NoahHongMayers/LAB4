@@ -18,54 +18,42 @@
     <%
     var pizzaPrice = 0;
     var extraPrice = 0;
+    const PRIX_PIZZA = {
+        "Pepperoni": 13.80,
+        "All Dressed": 15.50,
+        "Vegetarian": 14.30
+    };
 
-    if (pizza == "Pepperoni") 
-    {
-        pizzaPrice = 13.80;
-    } 
-    
-    else if (pizza == "All Dressed") 
-    {
-        pizzaPrice = 15.50;
-    } 
+    const MULT_SIZE = {
+        "Small": 0.8,
+        "Medium": 1.0,
+        "Large": 1.2
+    };
 
-    else if (pizza == "Vegetarian") 
-    {
-        pizzaPrice = 14.30;
-    }
+    const PRIX_INGREDIENTS = 1.50;
+    const TAX_RATE = 0.15;
+    //C2 : beaucoup de chiffre magique, il serait préférable de les mettre dans des variables ou un objet pour plus de clarté et de maintenabilité
 
-
-    if (size == "Small") 
-    {
-        pizzaPrice = pizzaPrice * 0.8;
-    } 
-
-    else if (size == "Medium") 
-    {
-        pizzaPrice = pizzaPrice * 1.0;
-    }
-
-    else if (size == "Large") 
-    {
-        pizzaPrice = pizzaPrice * 1.2;
-    }
+    pizzaPrice = PRIX_PIZZA[pizza];   
+ 
+    pizzaPrice = pizzaPrice * MULT_SIZE[size];
 
 
     if (addIngredients.includes("Spicy Sausage")) {
-        extraPrice = extraPrice + 1.50;
+        extraPrice = extraPrice + PRIX_INGREDIENTS;
     }
 
     if (addIngredients.includes("Extra Cheese")) {
-        extraPrice = extraPrice + 1.50;
+        extraPrice = extraPrice + PRIX_INGREDIENTS;
     }
 
     if (addIngredients.includes("Italian Ham")) {
-        extraPrice = extraPrice + 1.50;
+        extraPrice = extraPrice + PRIX_INGREDIENTS;
     }
 
 
     var subtotal = (pizzaPrice + extraPrice) * quantity;
-    var taxes = subtotal * 0.15;
+    var taxes = subtotal * TAX_RATE;
     var total = subtotal + taxes;
 %>
 
