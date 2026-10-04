@@ -2,6 +2,14 @@
   "name": "skeleton",
   "version": "1.0.0",
   "description": "skeleton",
+  "homepage": "https://github.com/NoahHongMayers/LAB4#readme",
+  "bugs": {
+    "url": "https://github.com/NoahHongMayers/LAB4/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NoahHongMayers/LAB4.git"
+  },
   "license": "ISC",
   "author": "Noah Hong Mayers",
   "type": "commonjs",
@@ -10,10 +18,8 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
+    "ejs": "^6.0.1",
+    "express": "^5.2.1",
     "node": "^26.9.0"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/NoahHongMayers/LAB4"
   }
 }

@@ -75,14 +75,19 @@
                 Phone Number<br>
                 <input type="text" title="Enter a phone number using the format 123 4567 890" name="phone"
                     pattern="[0-9]{3} [0-9]{3} [0-9]{4}" required><br><br>
-
+                <!-- A22: Tu n'oblige pas à remplir ce champ -->
                 <!-- email -->
                 Email<br>
-                <input type="email" name="email"><br><br>
-
+                <input type="email" name="email" required><br><br>
+                <!-- A17: le mode de paiement doit être sélectionné à partir d'une liste déroulante -->
                 <!-- payment -->
                 Payment Method<br>
-                <input type="text" name="payment" required><br><br>
+                <select name="payment" required>
+                    <option value="">Select a payment method</option>
+                    <option value="Credit Card">Credit Card</option>
+                    <option value="Debit Card">Debit Card</option>
+                    <option value="Cash">Cash</option>
+                </select><br><br>
 
                 <button type="submit">Confirm my Order</button>
 
