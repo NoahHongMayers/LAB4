@@ -10,8 +10,8 @@ var express = require('express');// Import the Express framework
 var router = express.Router();// Create a new router object to handle routes
 
 
-router.get('/', function(req, res, next) {
-res.render('pages/contacts', { title: 'Contacts' });
+router.get('/', function (req, res, next) {
+    res.render('pages/contacts', { title: 'Contacts' });
 });
 
 module.exports = router;// Export the router object to be used in other parts of the application

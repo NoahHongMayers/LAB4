@@ -13,9 +13,15 @@
 <%- include('../partials/head.ejs') %>
 
 <body>
-
+    <%- include('../partials/header.ejs') %>
 
     <%
+    const petite = 0.8;
+    const moyenne = 1.0;
+    const grande = 1.2;
+    const pricePerExtraIngredient = 1.50;
+    const taxRate = 0.15;
+
     var pizzaPrice = 0;
     var extraPrice = 0;
 
@@ -37,35 +43,35 @@
 
     if (size == "Small") 
     {
-        pizzaPrice = pizzaPrice * 0.8;
+        pizzaPrice = pizzaPrice * petite;
     } 
 
     else if (size == "Medium") 
     {
-        pizzaPrice = pizzaPrice * 1.0;
+        pizzaPrice = pizzaPrice * moyenne;
     }
 
     else if (size == "Large") 
     {
-        pizzaPrice = pizzaPrice * 1.2;
+        pizzaPrice = pizzaPrice * grande;
     }
 
 
     if (addIngredients.includes("Spicy Sausage")) {
-        extraPrice = extraPrice + 1.50;
+        extraPrice = extraPrice + pricePerExtraIngredient;
     }
 
     if (addIngredients.includes("Extra Cheese")) {
-        extraPrice = extraPrice + 1.50;
+        extraPrice = extraPrice + pricePerExtraIngredient;
     }
 
     if (addIngredients.includes("Italian Ham")) {
-        extraPrice = extraPrice + 1.50;
+        extraPrice = extraPrice + pricePerExtraIngredient;
     }
 
 
     var subtotal = (pizzaPrice + extraPrice) * quantity;
-    var taxes = subtotal * 0.15;
+    var taxes = subtotal * taxRate;
     var total = subtotal + taxes;
 %>
 

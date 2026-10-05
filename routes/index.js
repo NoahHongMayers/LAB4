@@ -8,9 +8,20 @@
 
 var express = require('express');// Import the Express framework
 var router = express.Router();// Create a new router object to handle routes
+const fs = require('fs');
+const path = require('path');
 
 
-const historique = {};// Object to store order history
+const historyPath = path.join(__dirname, '..', 'data', 'historique.json');
+let historique = {};
+
+if (fs.existsSync(historyPath)) {
+  historique = JSON.parse(fs.readFileSync(historyPath, 'utf8'));
+}
+
+function normalizePhone(phone) {
+  return String(phone || '').replace(/\D/g, '');
+}
 
 
 router.get('/', function (req, res, next) {
@@ -37,13 +48,14 @@ router.post('/orders', function (req, res) {
   const firstName = req.body.firstName;
 
   const phone = req.body.phone;
+  const phoneKey = normalizePhone(phone);
 
   const email = req.body.email;
 
   const payment = req.body.payment;
 
-  if (!historique[phone]) {// If the phone number is not already in the history, create a new entry
-    historique[phone] = {
+  if (!historique[phoneKey]) {// If the phone number is not already in the history, create a new entry
+    historique[phoneKey] = {
       client: {
         firstName,
         lastName,
@@ -57,7 +69,7 @@ router.post('/orders', function (req, res) {
     };
   }
 
-  historique[phone].orders.push({// Add the new order to the client's order history
+  historique[phoneKey].orders.push({// Add the new order to the client's order history
     pizza,
     quantity,
     size,
@@ -65,6 +77,9 @@ router.post('/orders', function (req, res) {
     payment,
     date: new Date()
   });
+
+  fs.mkdirSync(path.dirname(historyPath), { recursive: true });
+  fs.writeFileSync(historyPath, JSON.stringify(historique, null, 2), 'utf8');
 
   res.render('pages/orders', {
     pizza: pizza,
@@ -93,8 +108,8 @@ router.get('/history', function (req, res) {// Handle GET requests to the /histo
 
 router.post('/history', function (req, res) {// Handle POST requests to the /history route
 
-  const phone = req.body.phone;
-  const customerData = historique[phone];
+  const phoneKey = normalizePhone(req.body.phone);
+  const customerData = historique[phoneKey];
 
   if (!customerData) {
     return res.render('pages/history', {

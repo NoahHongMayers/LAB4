@@ -26,7 +26,7 @@
                 <input type="radio" name="pizza" value="All Dressed">
                 <label>All Dressed</label><br>
 
-                <input type="radio" name="pizza" value="Vegetarian" >
+                <input type="radio" name="pizza" value="Vegetarian">
                 <label>Vegetarian</label>
                 <br><br>
 
@@ -73,16 +73,24 @@
 
                 <!-- phone -->
                 Phone Number<br>
-                <input type="text" title="Enter a phone number using the format 123 4567 890" name="phone"
-                    pattern="[0-9]{3} [0-9]{3} [0-9]{4}" required><br><br>
+                <input type="tel" title="Enter a phone number using the format 123-456-7890" name="phone"
+                    pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" placeholder="123-456-7890" required><br><br>
 
                 <!-- email -->
                 Email<br>
-                <input type="email" name="email"><br><br>
+                <input type="email" name="email" required><br><br>
 
                 <!-- payment -->
                 Payment Method<br>
-                <input type="text" name="payment" required><br><br>
+
+                <input type="radio" name="payment" value="Cash" required>
+                <label>Cash</label><br>
+
+                <input type="radio" name="payment" value="Debit">
+                <label>Debit</label><br>
+
+                <input type="radio" name="payment" value="Credit">
+                <label>Credit</label><br><br>
 
                 <button type="submit">Confirm my Order</button>
 
